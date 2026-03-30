@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #f8fafc;
+  --card-foreground: #0f172a;
+  --border: #e2e8f0;
+  --primary: #06b6d4;
+  --primary-hover: #0891b2;
+  --secondary: #64748b;
+  --accent: #8b5cf6;
+  --success: #10b981;
+  --danger: #ef4444;
+}
+
+.dark {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+  --border: #1e293b;
+  --primary: #22d3ee;
+  --primary-hover: #67e8f9;
+}
+
+body {
+  @apply bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300;
+  font-family: 'Inter', sans-serif;
+}
+
+.glass-card {
+  @apply bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-xl transition-all duration-300;
+}
+
+.premium-button {
+  @apply relative overflow-hidden px-6 py-3 rounded-xl font-bold transition-all duration-300 active:scale-95 disabled:opacity-50;
+}
+
+.primary-btn {
+  @apply premium-button bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-lg hover:shadow-cyan-500/30;
+}
+
+.secondary-btn {
+  @apply premium-button border border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--foreground)] hover:text-[var(--background)];
+}
+
+.success-btn {
+  @apply premium-button bg-gradient-to-r from-emerald-500 to-teal-600 text-white hover:shadow-lg hover:shadow-emerald-500/30;
+}
+
+.danger-btn {
+  @apply premium-button bg-gradient-to-r from-rose-500 to-red-600 text-white hover:shadow-lg hover:shadow-rose-500/30;
+}
+
+/* PREMIUM INTERACTION CLASSES */
+.hover-lift {
+  @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl active:scale-[0.98];
+}
+
+/* MOBILE FIXES & UTILITIES */
+html, body {
+  @apply overflow-x-hidden max-w-full;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  @apply w-2;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 dark:bg-slate-800 rounded-full hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors;
+}
+
+@layer utilities {
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+}
+
+/* RESPONSIVE PADDINGS */
+.section-padding {
+  @apply px-6 py-10 md:px-12 md:py-16 lg:px-20;
+}
