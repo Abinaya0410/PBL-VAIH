@@ -232,3 +232,7 @@
 [DEBUG] Time: 2026-03-30T12:53:11.197Z, UserID: 6985ad9668ec0c8186b251ee, Role: teacher, Courses Found: 5
 [DEBUG] Time: 2026-03-30T12:53:16.706Z, UserID: 6985ad9668ec0c8186b251ee, Role: teacher, Courses Found: 5
 [DEBUG] Time: 2026-03-30T12:53:19.605Z, UserID: 6985ad9668ec0c8186b251ee, Role: teacher, Courses Found: 5
+[DEBUG] Time: 2026-04-04T22:14:31.753Z, UserID: 6985ad9668ec0c8186b251ee, Role: teacher, Courses Found: 6
+[DEBUG] Time: 2026-04-04T22:14:32.460Z, UserID: 6985ad9668ec0c8186b251ee, Role: teacher, Courses Found: 6
+[DEBUG] Time: 2026-04-04T22:14:41.805Z, UserID: 6985ad9668ec0c8186b251ee, Role: teacher, Courses Found: 6
+[DEBUG] Time: 2026-04-04T22:14:42.837Z, UserID: 6985ad9668ec0c8186b251ee, Role: teacher, Courses Found: 6
