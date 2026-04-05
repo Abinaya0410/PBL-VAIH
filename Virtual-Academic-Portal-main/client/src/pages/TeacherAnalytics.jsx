@@ -43,8 +43,9 @@ export default function TeacherAnalytics() {
       console.log("Fetching Teacher Analytics...");
       try {
         const token = localStorage.getItem("token");
+        const API_URL = import.meta.env.VITE_API_URL || "";
         
-        const res = await fetch("/api/analytics/teacher", {
+        const res = await fetch(`${API_URL}/api/analytics/teacher`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         
@@ -71,7 +72,8 @@ export default function TeacherAnalytics() {
       try {
         console.log("Calling Engagement API...");
         const token = localStorage.getItem("token");
-        const res = await fetch("/api/analytics/engagement", {
+        const API_URL = import.meta.env.VITE_API_URL || "";
+        const res = await fetch(`${API_URL}/api/analytics/engagement`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         
@@ -79,7 +81,8 @@ export default function TeacherAnalytics() {
 
         const data = await res.json();
         console.log("Engagement Data:", data);
-        setEngagementData(data || []);
+        if (!Array.isArray(data)) console.error("Engagement Data not an array:", data);
+        setEngagementData(Array.isArray(data) ? data : []);
       } catch (err) {
         console.error("Engagement Error:", err);
         setEngagementData([]);
@@ -95,7 +98,8 @@ export default function TeacherAnalytics() {
   const handleNotify = async (student) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.post("/api/analytics/notify-at-risk", {
+      const API_URL = import.meta.env.VITE_API_URL || "";
+      await axios.post(`${API_URL}/api/analytics/notify-at-risk`, {
         studentId: student._id || student.id, 
         studentName: student.name,
         reason: student.reason

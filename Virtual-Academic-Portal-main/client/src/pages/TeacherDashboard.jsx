@@ -47,7 +47,8 @@ export default function TeacherDashboard() {
   const fetchAnalytics = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("/api/analytics/teacher", {
+      const API_URL = import.meta.env.VITE_API_URL || "";
+      const res = await fetch(`${API_URL}/api/analytics/teacher`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -66,11 +67,13 @@ export default function TeacherDashboard() {
   const fetchCourses = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("/api/courses/teacher", {
+      const API_URL = import.meta.env.VITE_API_URL || "";
+      const res = await fetch(`${API_URL}/api/courses/teacher`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
-      setCourses(data.slice(0, 3));
+      if (!Array.isArray(data)) console.error("Courses API returned non-array:", data);
+      setCourses(Array.isArray(data) ? data.slice(0, 3) : []);
     } catch (err) {
       console.log(err);
     }
