@@ -36,7 +36,7 @@ export default function StudentProfile() {
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/users/me", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/me`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProfile(res.data);
@@ -60,7 +60,7 @@ export default function StudentProfile() {
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
-      const res = await axios.put("http://localhost:5000/api/users/update-profile", profile, {
+      const res = await axios.put(`${import.meta.env.VITE_API_URL}/api/users/update-profile`, profile, {
         headers: { Authorization: `Bearer ${token}` }
       });
       

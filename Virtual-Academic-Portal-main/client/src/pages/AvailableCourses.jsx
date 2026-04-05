@@ -21,7 +21,7 @@ export default function AvailableCourses() {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await fetch("http://localhost:5000/api/courses", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/courses`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -42,7 +42,7 @@ export default function AvailableCourses() {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        `http://localhost:5000/api/courses/enroll/${selectedCourse._id}`,
+        `${import.meta.env.VITE_API_URL}/api/courses/enroll/${selectedCourse._id}`,
         {
           method: "POST",
           headers: {

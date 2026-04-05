@@ -18,7 +18,7 @@ export default function StudentLessonView() {
   useEffect(() => {
     const fetchLesson = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/lessons/${id}`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/lessons/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setLesson(res.data);
@@ -117,7 +117,7 @@ export default function StudentLessonView() {
                   </h2>
                 </div>
                 <iframe
-                  src={`http://localhost:5000${lesson.pdfUrl}`}
+                  src={`${import.meta.env.VITE_API_URL}${lesson.pdfUrl}`}
                   className="w-full h-[600px] rounded-2xl border border-white/10"
                   title="Lesson PDF"
                 ></iframe>

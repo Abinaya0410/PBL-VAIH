@@ -39,7 +39,7 @@ export default function StudentDashboard() {
   const fetchDashboardStats = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/analytics/student-stats", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/analytics/student-stats`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -54,7 +54,7 @@ export default function StudentDashboard() {
   const fetchAnnouncements = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/courses/my-announcements", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/courses/my-announcements`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -71,7 +71,7 @@ export default function StudentDashboard() {
   const fetchEnrolledCourses = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/courses/my", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/courses/my`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -49,7 +49,7 @@ export default function AddAssignment() {
         formData.append("pdf", pdf);
       }
 
-      const res = await fetch("http://localhost:5000/api/assignments", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/assignments`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

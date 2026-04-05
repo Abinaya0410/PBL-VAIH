@@ -45,7 +45,7 @@ export default function CourseBuilder() {
 
   const fetchCourse = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/courses/teacher", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/courses/teacher`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -58,7 +58,7 @@ export default function CourseBuilder() {
 
   const fetchLessons = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/courses/${id}/lessons`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/courses/${id}/lessons`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -70,7 +70,7 @@ export default function CourseBuilder() {
 
   const fetchAssignments = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/assignments/course/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/assignments/course/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -90,14 +90,14 @@ export default function CourseBuilder() {
       return;
     }
     const cleanPath = pdfUrl.includes("assignments/") ? pdfUrl : `assignments/${pdfUrl}`;
-    const fileUrl = `http://localhost:5000/uploads/${cleanPath}`;
+    const fileUrl = `${import.meta.env.VITE_API_URL}/uploads/${cleanPath}`;
     window.open(fileUrl, "_blank");
   };
 
   const deleteAssignment = async (assignmentId) => {
     if (!window.confirm("Are you sure you want to delete this assignment?")) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/assignments/${assignmentId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/assignments/${assignmentId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -113,7 +113,7 @@ export default function CourseBuilder() {
   const deleteLesson = async (lessonId) => {
     if (!window.confirm("Are you sure you want to delete this lesson?")) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/lessons/${lessonId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/lessons/${lessonId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -129,7 +129,7 @@ export default function CourseBuilder() {
   const deleteCourse = async () => {
     setIsDeleting(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/courses/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/courses/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       });

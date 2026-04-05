@@ -67,7 +67,7 @@
 //       const token = localStorage.getItem("token");
 
 //       await axios.post(
-//         "http://localhost:5000/api/users/complete-profile",
+//         `${import.meta.env.VITE_API_URL}/api/users/complete-profile`,
 //         formData,
 //         {
 //           headers: {
@@ -176,7 +176,7 @@ export default function TeacherOnboarding() {
       const email = localStorage.getItem("email");   // ⭐ IMPORTANT
 
       await axios.post(
-        "http://localhost:5000/api/users/complete-profile",
+        `${import.meta.env.VITE_API_URL}/api/users/complete-profile`,
         { ...formData, email }   // ⭐ SEND EMAIL
       );
 

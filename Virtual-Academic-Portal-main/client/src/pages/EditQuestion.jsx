@@ -18,7 +18,7 @@
 //       const token = localStorage.getItem("token");
 
 //       const res = await fetch(
-//         `http://localhost:5000/api/question-bank/teacher`,
+//         `${import.meta.env.VITE_API_URL}/api/question-bank/teacher`,
 //         {
 //           headers: {
 //             Authorization: `Bearer ${token}`,
@@ -57,7 +57,7 @@
 //     const token = localStorage.getItem("token");
 
 //     await fetch(
-//       `http://localhost:5000/api/question-bank/${questionId}`,
+//       `${import.meta.env.VITE_API_URL}/api/question-bank/${questionId}`,
 //       {
 //         method: "PUT",
 //         headers: {
@@ -160,7 +160,7 @@ export default function EditQuestion() {
         const token = localStorage.getItem("token");
 
         const res = await fetch(
-          `http://localhost:5000/api/question-bank/${questionId}`,
+          `${import.meta.env.VITE_API_URL}/api/question-bank/${questionId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -199,7 +199,7 @@ export default function EditQuestion() {
       const token = localStorage.getItem("token");
 
       await fetch(
-        `http://localhost:5000/api/question-bank/${questionId}`,
+        `${import.meta.env.VITE_API_URL}/api/question-bank/${questionId}`,
         {
           method: "PUT",
           headers: {

@@ -25,7 +25,7 @@
 //   const fetchCourse = async () => {
 //     const token = localStorage.getItem("token");
 
-//     const res = await fetch("http://localhost:5000/api/courses/teacher", {
+//     const res = await fetch(`${import.meta.env.VITE_API_URL}/api/courses/teacher`, {
 //       headers: {
 //         Authorization: `Bearer ${token}`
 //       }
@@ -70,7 +70,7 @@
 //       const token = localStorage.getItem("token");
 
 //       await axios.post(
-//         "http://localhost:5000/api/course-quiz",
+//         `${import.meta.env.VITE_API_URL}/api/course-quiz`,
 //         {
 //           title,
 //           courseId,
@@ -226,7 +226,7 @@ export default function CreateQuiz() {
   const fetchCourse = async () => {
     const token = localStorage.getItem("token");
 
-    const res = await fetch("http://localhost:5000/api/courses/teacher", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/courses/teacher`, {
       headers: { Authorization: `Bearer ${token}` }
     });
 
@@ -246,7 +246,7 @@ export default function CreateQuiz() {
     const token = localStorage.getItem("token");
 
     const res = await fetch(
-      `http://localhost:5000/api/course-quiz/${courseId}`,
+      `${import.meta.env.VITE_API_URL}/api/course-quiz/${courseId}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
 
@@ -293,7 +293,7 @@ export default function CreateQuiz() {
     const token = localStorage.getItem("token");
 
     await axios.post(
-      "http://localhost:5000/api/course-quiz",
+      `${import.meta.env.VITE_API_URL}/api/course-quiz`,
       { title, courseId, questions },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -309,7 +309,7 @@ export default function CreateQuiz() {
     const token = localStorage.getItem("token");
 
     await fetch(
-      `http://localhost:5000/api/course-quiz/${quizId}/question/${index}`,
+      `${import.meta.env.VITE_API_URL}/api/course-quiz/${quizId}/question/${index}`,
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
@@ -327,7 +327,7 @@ export default function CreateQuiz() {
     const q = savedQuestions[index];
 
     await fetch(
-      `http://localhost:5000/api/course-quiz/${quizId}/question/${index}`,
+      `${import.meta.env.VITE_API_URL}/api/course-quiz/${quizId}/question/${index}`,
       {
         method: "PUT",
         headers: {
@@ -362,7 +362,7 @@ export default function CreateQuiz() {
     setAiLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.post("http://localhost:5000/api/ai/generate-questions", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/ai/generate-questions`, {
         topic: aiTopic,
         count: aiCount
       }, {
@@ -425,7 +425,7 @@ export default function CreateQuiz() {
       }
 
       const res = await axios.post(
-        "http://localhost:5000/api/course-quiz",
+        `${import.meta.env.VITE_API_URL}/api/course-quiz`,
         { 
           title, 
           courseId, 

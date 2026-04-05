@@ -22,7 +22,7 @@ export default function QuizAttempts() {
   const fetchAttempts = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/quiz-attempts",
+        `${import.meta.env.VITE_API_URL}/api/quiz-attempts`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -53,7 +53,7 @@ export default function QuizAttempts() {
     try {
       setLoading(true);
       const res = await axios.get(
-        `http://localhost:5000/api/quiz-attempts/course/${courseId}`,
+        `${import.meta.env.VITE_API_URL}/api/quiz-attempts/course/${courseId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

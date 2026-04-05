@@ -43,7 +43,7 @@ export default function StudentCourseView() {
   const fetchCourseData = async () => {
     setLoading(true);
     try {
-      const courseRes = await axios.get(`http://localhost:5000/api/courses/my`, {
+      const courseRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/courses/my`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const currentCourse = courseRes.data.find(c => c._id === id);
@@ -67,7 +67,7 @@ export default function StudentCourseView() {
 
   const fetchAchievementDetails = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/quiz-attempts`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/quiz-attempts`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const courseAttempts = res.data.filter(a => a.course?._id === id);
@@ -81,7 +81,7 @@ export default function StudentCourseView() {
   };
 
   const fetchLessons = async () => {
-    const res = await axios.get(`http://localhost:5000/api/courses/${id}/lessons`, {
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/courses/${id}/lessons`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     setLessons(res.data);
@@ -89,7 +89,7 @@ export default function StudentCourseView() {
   };
 
   const fetchAnnouncements = async () => {
-    const res = await axios.get(`http://localhost:5000/api/courses/${id}/announcements`, {
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/courses/${id}/announcements`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     setAnnouncements(res.data);
@@ -101,7 +101,7 @@ export default function StudentCourseView() {
     
     for (let lesson of lessonList) {
       try {
-        const res = await axios.get(`http://localhost:5000/api/lessons/${lesson._id}/progress`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/lessons/${lesson._id}/progress`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         
@@ -126,11 +126,11 @@ export default function StudentCourseView() {
 
   const checkAssignmentStatus = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/assignments/check/${id}`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/assignments/check/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
-      const assignmentsRes = await axios.get(`http://localhost:5000/api/assignments/course/${id}`, {
+      const assignmentsRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/assignments/course/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       

@@ -38,7 +38,7 @@ export default function LessonDetails() {
   const fetchLesson = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:5000/api/lessons/${lessonId}`, { 
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/lessons/${lessonId}`, { 
         headers: { Authorization: `Bearer ${token}` } 
       });
       const data = await res.json();
@@ -51,7 +51,7 @@ export default function LessonDetails() {
   const fetchQuestions = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:5000/api/lessons/${lessonId}/question-bank`, { 
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/lessons/${lessonId}/question-bank`, { 
         headers: { Authorization: `Bearer ${token}` } 
       });
       const data = await res.json();
@@ -64,7 +64,7 @@ export default function LessonDetails() {
   const checkProgress = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:5000/api/lessons/${lessonId}/progress`, { 
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/lessons/${lessonId}/progress`, { 
         headers: { Authorization: `Bearer ${token}` } 
       });
       const data = await res.json();
@@ -77,7 +77,7 @@ export default function LessonDetails() {
   const markCompleted = async () => {
     try {
       const token = localStorage.getItem("token");
-      await fetch(`http://localhost:5000/api/lessons/${lessonId}/complete`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/lessons/${lessonId}/complete`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -98,7 +98,7 @@ export default function LessonDetails() {
     if (!window.confirm("Are you sure you want to delete this question?")) return;
     try {
       const token = localStorage.getItem("token");
-      await fetch(`http://localhost:5000/api/question-bank/${questionId}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/question-bank/${questionId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -161,7 +161,7 @@ export default function LessonDetails() {
                {lesson?.pdfUrl ? (
                  <div className="flex flex-wrap gap-4">
                     {(() => {
-                      const fullPdfUrl = `http://localhost:5000${lesson.pdfUrl.startsWith('/') ? '' : '/'}${lesson.pdfUrl}`;
+                      const fullPdfUrl = `${import.meta.env.VITE_API_URL}${lesson.pdfUrl.startsWith('/') ? '' : '/'}${lesson.pdfUrl}`;
                       
                       return (
                         <>

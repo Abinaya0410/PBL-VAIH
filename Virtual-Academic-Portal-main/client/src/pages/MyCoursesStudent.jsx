@@ -23,7 +23,7 @@ export default function MyCoursesStudent() {
   const fetchCourses = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/courses/my", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/courses/my`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();

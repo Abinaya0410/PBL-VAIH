@@ -43,7 +43,7 @@ export default function AddLesson() {
       }
 
       const res = await fetch(
-        `http://localhost:5000/api/courses/${id}/lessons`,
+        `${import.meta.env.VITE_API_URL}/api/courses/${id}/lessons`,
         {
           method: "POST",
           headers: {

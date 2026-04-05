@@ -24,7 +24,7 @@ const CompletedCourseReview = () => {
   useEffect(() => {
     const fetchReviewData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/courses/completed/${courseId}/review`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/courses/completed/${courseId}/review`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setData(response.data);

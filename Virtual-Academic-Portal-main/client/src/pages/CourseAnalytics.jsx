@@ -17,7 +17,7 @@ export default function CourseAnalytics() {
   const fetchAnalytics = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:5000/api/analytics/course/${courseId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/analytics/course/${courseId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.ok) {

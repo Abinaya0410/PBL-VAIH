@@ -20,7 +20,7 @@ export default function CompletedCourses() {
   const fetchCompletedCourses = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/courses/my-completed", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/courses/my-completed`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();

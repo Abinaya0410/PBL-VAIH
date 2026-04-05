@@ -20,7 +20,7 @@
 //     const token = localStorage.getItem("token");
 
 //     const res = await fetch(
-//       `http://localhost:5000/api/assignments/${id}`,
+//       `${import.meta.env.VITE_API_URL}/api/assignments/${id}`,
 //       {
 //         headers: {
 //           Authorization: `Bearer ${token}`
@@ -43,7 +43,7 @@
 //     const token = localStorage.getItem("token");
 
 //     await fetch(
-//       `http://localhost:5000/api/assignments/${id}`,
+//       `${import.meta.env.VITE_API_URL}/api/assignments/${id}`,
 //       {
 //         method: "PUT",
 //         headers: {
@@ -130,7 +130,7 @@
 //     const token = localStorage.getItem("token");
 
 //     const res = await fetch(
-//       `http://localhost:5000/api/assignments/${id}`,
+//       `${import.meta.env.VITE_API_URL}/api/assignments/${id}`,
 //       {
 //         headers:{
 //           Authorization:`Bearer ${token}`
@@ -162,7 +162,7 @@
 //     }
 
 //     await fetch(
-//       `http://localhost:5000/api/assignments/${id}`,
+//       `${import.meta.env.VITE_API_URL}/api/assignments/${id}`,
 //       {
 //         method:"PUT",
 //         headers:{
@@ -259,7 +259,7 @@ export default function EditAssignment() {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        `http://localhost:5000/api/assignments/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/assignments/${id}`,
         {
           headers:{
             Authorization:`Bearer ${token}`
@@ -302,7 +302,7 @@ export default function EditAssignment() {
       }
 
       const res = await fetch(
-        `http://localhost:5000/api/assignments/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/assignments/${id}`,
         {
           method:"PUT",
           headers:{

@@ -24,7 +24,7 @@ export default function TeacherSidebar({ mobile, onClose }) {
     const fetchPendingCount = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:5000/api/assignments/pending-count", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/assignments/pending-count`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();

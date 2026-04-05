@@ -23,7 +23,7 @@
 //         const token = localStorage.getItem("token");
 
 //         const res = await fetch(
-//           `http://localhost:5000/api/course-quiz/${courseId}`,
+//           `${import.meta.env.VITE_API_URL}/api/course-quiz/${courseId}`,
 //           {
 //             headers: {
 //               Authorization: `Bearer ${token}`,
@@ -93,7 +93,7 @@
 //       const token = localStorage.getItem("token");
 
 //       await fetch(
-//         `http://localhost:5000/api/course-quiz/submit/${courseId}`,
+//         `${import.meta.env.VITE_API_URL}/api/course-quiz/submit/${courseId}`,
 //         {
 //           method: "POST",
 //           headers: {
@@ -237,7 +237,7 @@ export default function AttemptQuiz() {
         const token = localStorage.getItem("token");
 
         const res = await fetch(
-          `http://localhost:5000/api/course-quiz/${courseId}`,
+          `${import.meta.env.VITE_API_URL}/api/course-quiz/${courseId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -319,7 +319,7 @@ export default function AttemptQuiz() {
       const token = localStorage.getItem("token");
 
       await fetch(
-        `http://localhost:5000/api/course-quiz/submit/${courseId}`,
+        `${import.meta.env.VITE_API_URL}/api/course-quiz/submit/${courseId}`,
         {
           method: "POST",
           headers: {
@@ -350,7 +350,7 @@ export default function AttemptQuiz() {
     const interval = setInterval(async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch(`http://localhost:5000/api/course-quiz/attempts/${courseId}/latest`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/course-quiz/attempts/${courseId}/latest`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();

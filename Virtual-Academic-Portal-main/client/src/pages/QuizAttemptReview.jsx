@@ -26,7 +26,7 @@ export default function QuizAttemptReview() {
     const fetchAttempt = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/quiz-attempt/${attemptId}`,
+          `${import.meta.env.VITE_API_URL}/api/quiz-attempt/${attemptId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

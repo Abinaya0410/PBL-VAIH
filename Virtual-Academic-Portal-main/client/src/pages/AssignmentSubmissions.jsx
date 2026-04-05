@@ -332,7 +332,7 @@ function AssignmentTable({ title, list, isGraded, gradingId, setGradingId, score
                     <td className="py-3">
                       <div className="flex items-center justify-center gap-2">
                         <a 
-                          href={`http://localhost:5000/uploads/${sub.submissionUrl}`} 
+                          href={`${import.meta.env.VITE_API_URL}/uploads/${sub.submissionUrl}`} 
                           target="_blank" 
                           rel="noreferrer"
                           className="p-1.5 text-slate-500 dark:text-slate-400 dark:text-slate-300 hover:text-cyan-500 transition-colors"

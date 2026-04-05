@@ -44,7 +44,13 @@ dns.setServers(["1.1.1.1", "8.8.8.8"]);
 // =====================
 // Global Middleware
 // =====================
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173", // allow local testing
+    process.env.CLIENT_URL  // production frontend (Vercel)
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // =====================

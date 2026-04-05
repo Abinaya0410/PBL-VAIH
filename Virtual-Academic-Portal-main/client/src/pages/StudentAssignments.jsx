@@ -41,7 +41,7 @@ export default function StudentAssignments() {
 
   const checkModuleCompletion = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/courses/${courseId}/lessons`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/courses/${courseId}/lessons`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const lessonList = res.data;
@@ -53,7 +53,7 @@ export default function StudentAssignments() {
 
       let count = 0;
       for (let lesson of lessonList) {
-        const progRes = await axios.get(`http://localhost:5000/api/lessons/${lesson._id}/progress`, {
+        const progRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/lessons/${lesson._id}/progress`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (progRes.data.completed) count++;
@@ -68,7 +68,7 @@ export default function StudentAssignments() {
 
   const fetchAssignments = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/assignments/course/${courseId}`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/assignments/course/${courseId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAssignments(res.data);
@@ -99,7 +99,7 @@ export default function StudentAssignments() {
     formData.append("pdf", file);
 
     try {
-      await axios.post("http://localhost:5000/api/assignments/submit", formData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/assignments/submit`, formData, {
         headers: { 
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data"
@@ -239,7 +239,7 @@ export default function StudentAssignments() {
                   <div className="w-full lg:w-96 p-8 md:p-12 bg-indigo-500/5 flex flex-col justify-center gap-8 relative overflow-hidden group/actions">
                     <div className="space-y-4 relative z-10">
                       <a
-                        href={`http://localhost:5000/uploads/${assignment.pdfUrl.includes('assignments/') ? assignment.pdfUrl : 'assignments/' + assignment.pdfUrl}`}
+                        href={`${import.meta.env.VITE_API_URL}/uploads/${assignment.pdfUrl.includes('assignments/') ? assignment.pdfUrl : 'assignments/' + assignment.pdfUrl}`}
                         target="_blank"
                         rel="noreferrer"
                         className="flex items-center justify-center gap-3 w-full p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all font-black text-[12px] uppercase tracking-widest group/btn shadow-xl hover:-translate-y-1 text-slate-900 dark:text-white"
@@ -287,7 +287,7 @@ export default function StudentAssignments() {
                       <div className="space-y-6 relative z-10">
                          <div className="space-y-3">
                             <a
-                              href={`http://localhost:5000/uploads/${assignment.submission?.submissionUrl.includes('assignments/') ? assignment.submission.submissionUrl : 'assignments/' + assignment.submission.submissionUrl}`}
+                              href={`${import.meta.env.VITE_API_URL}/uploads/${assignment.submission?.submissionUrl.includes('assignments/') ? assignment.submission.submissionUrl : 'assignments/' + assignment.submission.submissionUrl}`}
                               target="_blank"
                               rel="noreferrer"
                               className="flex items-center justify-center gap-3 w-full p-5 bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 rounded-2xl transition-all font-black text-[12px] uppercase tracking-widest group/view hover:bg-emerald-500 hover:text-white shadow-lg shadow-emerald-500/5"

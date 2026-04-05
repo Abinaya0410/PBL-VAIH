@@ -29,7 +29,7 @@ export default function StudentAnalytics() {
     const fetchAnalytics = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/analytics/student",
+          `${import.meta.env.VITE_API_URL}/api/analytics/student`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
