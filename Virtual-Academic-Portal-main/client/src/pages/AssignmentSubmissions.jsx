@@ -41,20 +41,34 @@ export default function AssignmentSubmissions() {
   const fetchData = async () => {
     setLoading(true);
     try {
+      const API_URL = import.meta.env.VITE_API_URL || "";
       const [subsRes, quizRes, coursesRes] = await Promise.all([
-        axios.get("/api/assignments/teacher/all", {
+        axios.get(`${API_URL}/api/assignments/teacher/all`, {
           headers: { Authorization: `Bearer ${token}` }
         }),
-        axios.get("/api/teacher/activity", {
+        axios.get(`${API_URL}/api/teacher/activity`, {
           headers: { Authorization: `Bearer ${token}` }
         }),
-        axios.get("/api/courses/teacher", {
+        axios.get(`${API_URL}/api/courses/teacher`, {
           headers: { Authorization: `Bearer ${token}` }
         })
       ]);
-      setSubmissions(subsRes.data);
-      setQuizActivity(quizRes.data);
-      setTeacherCourses(coursesRes.data);
+      
+      if (!Array.isArray(subsRes.data)) {
+        console.error("Submissions API returned non-array:", subsRes.data);
+      }
+      setSubmissions(Array.isArray(subsRes.data) ? subsRes.data : []);
+      
+      if (!Array.isArray(quizRes.data)) {
+        console.error("Quiz activity API returned non-array:", quizRes.data);
+      }
+      setQuizActivity(Array.isArray(quizRes.data) ? quizRes.data : []);
+      
+      if (!Array.isArray(coursesRes.data)) {
+        console.error("Courses API returned non-array:", coursesRes.data);
+      }
+      setTeacherCourses(Array.isArray(coursesRes.data) ? coursesRes.data : []);
+      
     } catch (err) {
       console.error(err);
       setError("Failed to fetch academic data.");
@@ -69,7 +83,8 @@ export default function AssignmentSubmissions() {
       return;
     }
     try {
-      await axios.put(`/api/assignments/grade/${submissionId}`, {
+      const API_URL = import.meta.env.VITE_API_URL || "";
+      await axios.put(`${API_URL}/api/assignments/grade/${submissionId}`, {
         score: Number(score),
         feedback
       }, {
